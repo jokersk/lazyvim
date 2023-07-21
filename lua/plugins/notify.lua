@@ -1,6 +1,6 @@
 return {
   {
     "rcarriga/nvim-notify",
-    enable = false,
+    enabled = false,
   },
 }
