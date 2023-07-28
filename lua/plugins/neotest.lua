@@ -1,3 +1,6 @@
+local nio = require("nio")
+local lib = require("neotest.lib")
+local neotest = require("neotest")
 return {
   { "theutz/neotest-pest" },
   {
@@ -5,10 +8,24 @@ return {
     opts = { adapters = { "neotest-pest" } },
     keys = {
       {
+        "<leader>to",
+        function()
+          require("neotest").output.open({
+            last_run = true,
+            enter = true,
+            auto_close = true,
+          })
+        end,
+        desc = "Show Output",
+      },
+      {
         "<leader>tl",
         function()
-          require("neotest").run.run_last()
-          require("neotest").output_panel.open()
+          nio.run(function()
+            neotest.run.run_last()
+          end, function()
+            neotest.output.open({ last_run = true, enter = true, auto_close = true })
+          end)
         end,
         desc = "Run last test",
       },
