@@ -9,6 +9,7 @@ return {
       require("luasnip.loaders.from_vscode").lazy_load()
       require("luasnip").filetype_extend("php", { "phpdoc" })
       require("luasnip").filetype_extend("php", { "html" })
+      require("luasnip").filetype_extend("blade", { "html" })
     end,
   },
   opts = function(_, opts)
